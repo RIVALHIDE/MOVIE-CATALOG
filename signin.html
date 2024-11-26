@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Sign In - Movies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <style type="text/css">
+        :root {
+            --main-color: #ff2c1f;
+            --text-color: #020307;
+            --bg-color: #fff;
+        }
+        
+        * {
+            font-family: "Poppins", sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--text-color);
+            color: var(--bg-color);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 100px;
+            transition: 0.5s;
+        }
+        
+        .signin-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 20px;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--bg-color);
+            display: flex;
+            align-items: center;
+            column-gap: 0.5rem;
+            text-decoration: none;
+        }
+        
+        .logo .bx {
+            font-size: 24px;
+            color: var(--main-color);
+        }
+        
+        .signin-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--bg-color);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--bg-color);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.7rem;
+            padding-right: 2.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            color: var(--bg-color);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--main-color);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-group .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 35px;
+            cursor: pointer;
+            color: var(--bg-color);
+            font-size: 1.2rem;
+        }
+        
+        .signin-btn {
+            width: 100%;
+            padding: 0.7rem 1.4rem;
+            background: var(--main-color);
+            color: var(--bg-color);
+            font-weight: 500;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.2s all linear;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .signin-btn:hover {
+            background: #fa1216;
+        }
+
+        .signin-btn i {
+            font-size: 1.2rem;
+        }
+        
+        .error-message {
+            color: var(--main-color);
+            text-align: center;
+            margin-top: 1rem;
+            display: none;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        
+        .signup-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: var(--bg-color);
+        }
+        
+        .signup-link a {
+            color: var(--main-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        .loading {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--bg-color);
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 474px) {
+            .signin-container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            header {
+                padding: 12px 4%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <i class='bx bx-movie-play'></i> Movies
+        </a>
+    </header>
+
+    <div class="signin-container">
+        <h2 class="signin-title">Sign In</h2>
+        <form id="signinForm" method="post" onsubmit="return handleSubmit(event);">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required="required" autocomplete="email" />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required="required" autocomplete="current-password" />
+                <i class='bx bx-hide toggle-password' onclick="togglePassword()"></i>
+            </div>
+            <button type="submit" class="signin-btn">
+                <span>Sign In</span>
+                <i class='bx bx-log-in-circle'></i>
+                <div class="loading"></div>
+            </button>
+            <div id="errorMessage" class="error-message"></div>
+        </form>
+        <div class="signup-link">
+            Don't have an account? <a href="#">Sign up</a>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        // Header shadow on scroll
+        let header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('shadow', window.scrollY > 0);
+        });
+
+        // Toggle password visibility
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.querySelector('.toggle-password');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('bx-hide');
+                toggleIcon.classList.add('bx-show');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('bx-show');
+                toggleIcon.classList.add('bx-hide');
+            }
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const submitButton = document.querySelector('.signin-btn');
+            const loadingSpinner = document.querySelector('.loading');
+            const buttonText = submitButton.querySelector('span');
+            const buttonIcon = submitButton.querySelector('i');
+            
+            // Show loading state
+            loadingSpinner.style.display = 'block';
+            buttonText.style.opacity = '0';
+            buttonIcon.style.display = 'none';
+            submitButton.disabled = true;
+            
+            // Create XML data
+            const xmlData = '<?xml version="1.0" encoding="UTF-8"?>' +
+                           '<signin>' +
+                           '<email>' + email + '</email>' +
+                           '<password>' + password + '</password>' +
+                           '</signin>';
+            
+            // Create XMLHttpRequest object
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'SignInServlet', true);
+            xhr.setRequestHeader('Content-Type', 'application/xml');
+            
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    // Hide loading state
+                    loadingSpinner.style.display = 'none';
+                    buttonText.style.opacity = '1';
+                    buttonIcon.style.display = 'block';
+                    submitButton.disabled = false;
+                    
+                    if (xhr.status === 200) {
+                        // Parse XML response
+                        const response = xhr.responseXML;
+                        const status = response.getElementsByTagName('status')[0].textContent;
+                        const message = response.getElementsByTagName('message')[0].textContent;
+                        
+                        if (status === 'success') {
+                            window.location.href = 'index.html';
+                        } else {
+                            errorMessage.textContent = message;
+                            errorMessage.style.display = 'block';
+                        }
+                    } else {
+                        errorMessage.textContent = 'An error occurred. Please try again.';
+                        errorMessage.style.display = 'block';
+                    }
+                }
+            };
+            
+            xhr.send(xmlData);
+            return false;
+        }
+    </script>
+</body>
+</html>
