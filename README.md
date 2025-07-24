@@ -1,4 +1,8 @@
 Movie Catalog
+https://video-link-generator.replit.app/v/3u7je0wyauu8t45247zxfh
+
+https://video-link-generator.replit.app/v/7m2ntkbnx05xx4so4n28y
+
 <img width="1919" height="1079" alt="Screenshot 2025-07-24 214348" src="https://github.com/user-attachments/assets/a3987cfd-fef0-4a07-9560-3f934b9ca00f" />
 
 <img width="1919" height="1079" alt="Screenshot 2025-07-24 214400" src="https://github.com/user-attachments/assets/70eaf68d-0944-4376-955f-79d393593c5e" />
